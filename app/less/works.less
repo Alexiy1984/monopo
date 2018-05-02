@@ -1,0 +1,96 @@
+@import 'vendprx.less';
+
+.bg-full-window {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &_works {
+    .linear-gradient(top, rgba(0,0,0,0.3), 50%, rgba(0,0,0,0.3), 100%, '../media/images/bg_works_list.jpg');
+    background-size: cover, cover;
+    background-position: 0 0 , center;
+  }
+  &__circle-div {
+    width: 30rem;
+    height: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.works-area {
+  position: relative;
+  padding-top: 10rem;
+  z-index: 250;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  &__inner {
+    width: 60rem;
+    &__link {
+      width: 20rem;
+      height: auto;
+      &_hidden {
+        opacity: 0;
+      }
+      img{
+        width: 100%;
+        height: auto;
+        display: inline-block;
+      }
+      &_left {
+        float: left;
+        clear: both;
+        margin-bottom: 2.5rem;
+      }
+      &_right {
+        float: right;
+        clear: both;
+        margin-top: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1680px) {
+ 
+}
+
+@media (max-width: 1280px) {
+ 
+}
+
+@media (max-width: 980px) {
+ 
+}
+
+@media (max-width: 860px) {
+ 
+}
+
+@media (max-width: 680px) {
+ 
+}
+
+@media (max-width: 480px) {
+  .bg-full-window {
+    &__circle-div {
+      width: 25rem;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .bg-full-window {
+    &__circle-div {
+      width: 15rem;
+    }
+  }
+}

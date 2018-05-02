@@ -1,0 +1,127 @@
+@import 'mixins.less';
+.animated-link {
+  font-size: 0.75em;
+  font-family: 'Josefin Sans', sans-serif;
+  text-decoration: none;
+  &:hover &__text {
+      -webkit-transform: rotateX(360deg);
+      transform: rotateX(360deg);
+    }
+    &__text {
+      font-size: 0.75em;
+      text-transform: uppercase;
+      display: inline-block;
+      -webkit-transition: -webkit-transform 0.5s;
+      transition: transform 0.4s;
+      &:first-child {
+        transition-delay: 0s;
+      }
+      .generate-child();
+    }
+}
+
+.cssanimation (@anim-name: translateY, @anim-dur: 1s, @anim-tm-fun: ease) {
+  animation: @anim-name @anim-dur @anim-tm-fun;
+}
+
+.cssanimmult (@animcount, @anim-name-1: translateY, @anim-dur-1: 1s, @anim-tm-fun-1: ease,
+                          @anim-name-2: translateY, @anim-dur-2: 1s, @anim-tm-fun-2: ease,
+                          @anim-name-3: translateY, @anim-dur-3: 1s, @anim-tm-fun-3: ease
+) when (@animcount = 1) {
+  animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1, @anim-name-2 @anim-dur-2 @anim-tm-fun-2;
+}
+
+.cssanimmult (@animcount, @anim-name-1: translateY, @anim-dur-1: 1s, @anim-tm-fun-1: ease,
+                          @anim-name-2: translateY, @anim-dur-2: 1s, @anim-tm-fun-2: ease,
+                          @anim-name-3: translateY, @anim-dur-3: 1s, @anim-tm-fun-3: ease
+) when (@animcount = 2) {
+  animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1, @anim-name-2 @anim-dur-2 @anim-tm-fun-2;
+}
+
+.cssanimmult (@animcount, @anim-name-1: translateY, @anim-dur-1: 1s, @anim-tm-fun-1: ease,
+                          @anim-name-2: translateY, @anim-dur-2: 1s, @anim-tm-fun-2: ease,
+                          @anim-name-3: translateY, @anim-dur-3: 1s, @anim-tm-fun-3: ease                        
+) when (@animcount = 1) {
+  animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1, @anim-name-2 @anim-dur-2 @anim-tm-fun-2, @anim-name-3 @anim-dur-3 @anim-tm-fun-3;
+}
+
+@keyframes translate-Y{
+  0% {
+    transform: translateY(2.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes dashoffset {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 308;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashoffset2 {
+  from {
+    opacity: 1;
+    stroke-dasharray: 308;
+    stroke-dashoffset: 0;
+  }
+  to {
+    opacity: 1;
+    stroke-dasharray: 308;
+    stroke-dashoffset: 308;
+  }
+}
+
+@keyframes dashoffsetforicons {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dashoffsetforicons2 {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 400;
+  }
+  100% {
+    stroke-dashoffset: 400;
+    stroke-dasharray: 400;
+  }
+}
+
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes maxHeight {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 100vh;
+  }
+}
+
+@keyframes mmHeaderPadding {
+  from {
+    padding: 0; 
+  }
+  to {
+    padding: 7rem 5rem 4.5rem;
+  }
+}

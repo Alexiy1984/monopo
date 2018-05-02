@@ -1,0 +1,123 @@
+@import 'vendprx.less';
+@import 'mixins.less';
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&subset=cyrillic,latin-ext');
+@child-prop: animation-delay;
+.video-div {
+  background: url('../media/images/pic_fv_video1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 10 !important;
+  &_second {
+    background: url('../media/images/Rmagazine01_cover-1.jpg');
+  }
+  &_solutions {
+    background: url('../media/images/pic_solutions_fv.jpg');
+  }
+  &__centered-block {
+    .linear-gradient(to top, rgba(0,0,0,0.3), 0%, rgba(0,0,0,0.3), 100%,'../media/images/pic_fv_video1.jpg');
+    background-position: 0 0, center;
+    color: #fff;
+    max-width: 100%;
+    width: 25rem;
+    height: 25rem;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    z-index: 20 !important;
+    &_rounded {
+      border-radius: 100%;
+    }
+    &_hidden {
+      display: none;
+    }
+    &_second {
+      .linear-gradient(to top, rgba(0,0,0,0.3), 0%, rgba(0,0,0,0.3), 100%,'../media/images/Rmagazine01_cover-1.jpg');
+      background-position: 0 0, center;
+    }
+    &_solutions {
+      .linear-gradient(to top, rgba(0,0,0,0.3), 0%, rgba(0,0,0,0.3), 100%,'../media/images/pic_solutions_fv.jpg');
+      background-position: 0 0, center;
+    }
+    &__inner {
+      font-family: 'Oswald', sans-serif;
+      text-align: center;
+      width: 75%;
+      height: 75%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      padding: 4.5rem 0;
+      z-index: 30 !important;
+    }
+  }
+  &__animated-p-container {
+    font-size: 1.5em;
+    font-weight: 300;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    letter-spacing: -0.05em;
+  }
+  &__animated-p {
+    animation: text-translate 1s linear;
+    transform: translateY(2.5rem);
+    animation-fill-mode: forwards;
+    &_1{
+      animation-delay: 1.2s;
+    }
+    &_2 {
+      animation-delay: 1.4s;
+    }
+    &_3 {
+      animation-delay: 1.6s;
+    }
+  }
+  &__text-container {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+    margin-left: -0.3em;
+    margin-bottom: 0.5rem;
+  }
+  &__text-show {
+    font-weight: 400;
+    letter-spacing: -0.3em;
+    display: inline-block;
+    animation: text-translate 1s linear;
+    transform: translateY(2.5rem);
+    animation-fill-mode: forwards;
+    &:first-child {
+        animation-delay: 0s;
+      }
+      .generate-child2();
+  }
+}
+
+@keyframes text-translate {
+  50% {
+    transform: translateY(2.5rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .video-div {
+    &__centered-block {
+      width: 20rem;
+      height: 20rem;
+    }
+    &__text-container{
+      font-size: 1.5em;
+    }
+    &__animated-p-container {
+      font-size: 1em;
+    }
+  }
+}

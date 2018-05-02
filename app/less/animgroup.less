@@ -1,0 +1,140 @@
+@import 'mixins.less';
+.anim-group {
+  position: absolute;
+  top: calc(~"100vh - 13rem");
+  left: calc(~"100vw - 18rem");
+  &_hidden {
+    visibility: hidden;
+  }
+  &__text-container {
+    position: absolute;
+    left: -10.6px;
+    text-decoration: none;
+    font-size: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    &__char {
+      position: relative;
+      color: #fff;
+      display: inline-block;
+      text-decoration: none;
+      text-transform: uppercase;
+      left: 0;
+      transition: left 0.5s ease-out;
+
+    }
+    &#cont-1 {
+      top: 30px;
+      .anim-group {
+        &__text-container {
+          &__char {
+          .generate-child4();
+          }
+        }
+      }
+    }
+    &#cont-2 {
+      top: 46px;
+       .anim-group {
+        &__text-container {
+          &__char {
+          .generate-child5();
+          }
+        }
+      }
+    }
+  }
+  &__right-arrow {
+    position: absolute;
+    top: 65px;
+    left: -10.6px;
+    width: 64px;
+    height: auto;
+    transition: left 0.5s ease-out;
+    transition-delay: 0.2s;
+  }
+  &:hover {
+    .anim-group{
+      &__text-container {
+        &__char {
+          left: 25px;
+        }
+      }
+      &__right-arrow {
+        left: 8px;
+      }
+    }
+  }
+}
+.svg-circle {
+  position: relative;
+  stroke-dasharray: 0.1;
+  stroke-dashoffset: 308;
+  transform: rotate(150deg);
+
+  &:hover #svg-2 {
+    stroke-dasharray: 308;
+    animation: dashoffset 1s linear;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+  }
+}
+
+@media (max-width: 1280px) {
+  .anim-group {
+    top: 68vh;
+    left: calc(~"100vw - 18rem");
+  }
+}
+@media (max-width: 980px) {
+  .anim-group {
+    top: 68vh;
+    left: calc(~"100vw - 18rem");
+  }
+}
+@media (max-width: 860px) {
+  .anim-group {
+    top: 68vh;
+    left: calc(~"100vw - 12rem");
+  }
+}
+@media (max-width: 680px) {
+ 
+}
+@media (max-width: 480px) {
+  .anim-group {
+    visibility: hidden;
+    top: 60vh;
+    left: 55vw;
+    &__text-container {
+      &#cont-1 {
+        top: 0;
+        left: -25vw;
+      }
+      &#cont-2 {
+        top: 0;
+        left: -5vw;
+      }
+    }
+    &__right-arrow {
+      visibility: hidden;
+    }
+     &:hover {
+      .anim-group{
+        &__text-container {
+          &__char {
+            left: 0;
+          }
+        }
+        &__right-arrow {
+          left: 0;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 360px) {
+  .anim-group {
+    visibility: hidden;
+  }
+}

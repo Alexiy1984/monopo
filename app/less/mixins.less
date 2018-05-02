@@ -1,0 +1,58 @@
+@child-name: nth-child;
+.generate-child(@i: 1, @child-count: 10, @child-prop: transition-delay) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}: unit((@i * 0.05),s);
+  }
+  .generate-child(@i + 1);
+}
+.generate-child2(@i: 1, @child-count: 30, @child-prop: animation-delay) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}: unit((@i * 0.05),s);
+  }
+  .generate-child2(@i + 1);
+}
+.generate-child3(@i: 1, @child-count: 5, @child-prop: transition-delay,@child-mult: 0.3) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}: unit((@i * @child-mult),s);
+  }
+  .generate-child3(@i + 1);
+}
+.generate-child4(@i: 1, @child-count: 10, @child-prop: transition-delay,@child-mult: 0.1) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}: unit((@i * @child-mult),s);
+  }
+  .generate-child4(@i + 1);
+}
+
+.generate-child5(@i: 1, @child-count: 10, @child-prop: transition-delay,@child-mult: 0.1) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}: unit((@i * @child-mult + 0.1),s);
+  }
+  .generate-child5(@i + 1);
+}
+
+.transition-prfx (@trans-prop: transform, @trans-time: 1s, @trans-tf: ease-in-out) {
+  -webkit-transition: @trans-prop @trans-time @trans-tf;
+  -moz-transition: @trans-prop @trans-time @trans-tf;
+  -o-transition: @trans-prop @trans-time @trans-tf;
+  transition: @trans-prop @trans-time @trans-tf;
+}
+
+.transition-prfx-two (@trans-prop-1: transform, @trans-time-1: 1s, @trans-tf-1: ease-in-out,
+                      @trans-prop-2: transform, @trans-time-2: 1s, @trans-tf-2: ease-in-out) 
+{
+  -webkit-transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2;
+  -moz-transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2;
+  -o-transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2;
+  transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2;
+}
+
+.transition-prfx-three (@trans-prop-1: transform, @trans-time-1: 1s, @trans-tf-1: ease-in-out,
+                        @trans-prop-2: transform, @trans-time-2: 1s, @trans-tf-2: ease-in-out,
+                        @trans-prop-3: transform, @trans-time-3: 1s, @trans-tf-3: ease-in-out) 
+{
+  -webkit-transition: @trans-prop-1 @trans-time-1 @trans-tf-1 ,@trans-prop-2 @trans-time-2 @trans-tf-2, @trans-prop-3 @trans-time-3 @trans-tf-3;
+  -moz-transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2, @trans-prop-3 @trans-time-3 @trans-tf-3;
+  -o-transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2, @trans-prop-3 @trans-time-3 @trans-tf-3;
+  transition: @trans-prop-1 @trans-time-1 @trans-tf-1, @trans-prop-2 @trans-time-2 @trans-tf-2, @trans-prop-3 @trans-time-3 @trans-tf-3;
+}

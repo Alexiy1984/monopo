@@ -1,0 +1,247 @@
+@import 'video.less';
+@import 'animation.less';
+@import 'vendprx.less';
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i&subset=latin-ext');
+@font-face {
+  font-family: 'Futura-PT';
+  src: url('../media/fonts/Futura PT Medium.otf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: auto;
+  font-size: 16pt;
+}
+
+body {
+  min-width: 320px;
+  background-color: rgba(0,0,25,0.9);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 50;
+}
+
+@import 'works.less';
+
+.header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 300;
+}
+
+@import 'logo.less';
+@import 'menu.less';
+
+.row {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  z-index: 150;
+  color: #000;
+  background-color: #fff;
+  background-repeat: repeat;
+  background-size: cover;
+  &__inner {
+    padding-left: 12rem;
+    &_hidden {
+      opacity: 0;
+      .vertical-menu__item {
+        transform: translateY(5rem);
+      }
+      .gray-p {
+        color: #bbb;
+        font-family: 'Josefin Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.75em;
+        transform: translateY(5rem);
+      }
+      .underlined-div {
+        padding-right: 0.35rem;
+        display:inline-block;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid #000;
+        transform: translateY(5rem);
+      }
+      &.appeared {
+        .transition-prfx(opacity, 3s, ease-in-out);
+        opacity:1;
+        .vertical-menu__item {
+          transform: translateY(0);
+          .transition-prfx(transform, 1s, ease-in-out);
+          .generate-child3();
+        }
+        .gray-p {
+          .transition-prfx(transform, 1s, ease-in-out);
+          transform: translateY(0);
+          transition-delay: 0;
+        }
+        .underlined-div {
+          .transition-prfx(transform, 1s, ease-in-out);
+          transform: translateY(0);
+          transition-delay: 1.5s;
+        }
+      }
+    }
+  }
+}
+
+@import 'minsizemenu.less';
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  &__col{
+    margin-right: 2rem;
+  }
+  &__heading {
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-bottom: 1.5rem;
+    .transition-prfx(font-size, 0.5s, ease);
+  }
+  &__link {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    .transition-prfx(font-size, 0.5s, ease);
+  }
+  &__img {
+    .transition-prfx-two(width, 0.5s, ease, height, 0.75s, ease); 
+    &_big {
+      width:  30rem;
+      height: 20rem;
+    }
+    &_medium { 
+      width:  15rem;
+      height: 10rem;
+    }
+    &_small { 
+      width:  12rem;
+      height: 8rem;
+    }
+  }
+}
+
+@import 'icons.less';
+
+.block-hide {
+  display: none;
+}
+
+#svg-1 {
+
+}
+#svg-2 {
+  opacity: 0;
+  animation: dashoffset2 1s linear;
+}
+
+@import 'animgroup.less';
+
+.bottom-rotated-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.55em;
+  position: absolute;
+  top: calc(~"100vh - 100px");
+  left: 55px;
+  color: #fff;
+  text-transform: uppercase;
+  transform: rotate(-90deg);
+  transform-origin: center left;
+}
+
+.bottom-arrow {
+  position: absolute;
+  top: calc(~"100vh - 70px");
+  left: 50px;
+  width: auto;
+  height: 1rem;
+}
+
+.no-highlighted-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.text-compact {
+  letter-spacing: -0.35em;
+}
+
+@media (max-width: 1680px) {
+  html {
+    font-size: 13pt;
+  }
+}
+@media (max-width: 1280px) {
+  html {
+    font-size: 13pt;
+  }
+}
+@media (max-width: 980px) {
+  html {
+    font-size: 11pt;
+  }
+}
+@media (max-width: 860px) {
+  html {
+    font-size: 11pt;
+  }
+  .min-size-menu {
+    flex-direction: column;
+  }
+}
+@media (max-width: 680px) {
+  html {
+    font-size: 11pt;
+  }
+  .row{
+    &__inner {
+      padding-left: 10rem;
+    }
+  }
+}
+@media (max-width: 480px) {
+  html {
+    font-size: 10pt;
+  }
+  .row{
+    &__inner {
+      padding-left: 10%;
+    }
+  }
+  .svg-circle {
+    visibility: hidden;
+  }
+}
+@media (max-width: 360px) {
+  html {
+    font-size: 10pt;
+  }
+  .min-size-menu {
+    &__header {
+      padding: 5rem 3.5rem 2rem;
+    }
+    &__footer {
+      padding: 3.5rem;  
+    }
+  }
+}
