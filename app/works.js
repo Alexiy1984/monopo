@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let workarealinks = GetNumeredIds('JS-works-area-link-',8);
     let scrollheight = document.documentElement.scrollHeight;
-    let heightoffset = window.pageYOffset + document.documentElement.clientHeight
+    let heightoffset = window.pageYOffset + document.documentElement.clientHeight;
 
     console.log((heightoffset/scrollheight).toFixed(1));
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // for (let index = 1; index < workarealinks.length; index++) {
       //   if (IsVisible(workarealinks[index])) {
       //     RemoveClass(workarealinks[index] ,'works-area__inner__link_hidden');
-      //   } else  AddClass(workarealinks[index] ,'works-area__inner__link_hidden');
+      //   } else  AddClass(workarflealinks[index] ,'works-area__inner__link_hidden');
       // }
       
   }
