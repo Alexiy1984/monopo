@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let elemtopwheight = elemtop + element.offsetHeight;
     let wscrollHeight = document.documentElement.clientHeight;
     return ((elemtopwheight <= wscrollTop + wscrollHeight) && (elemtop >= wscrollTop ));
-    // return elemtopwheight + ' <= ' + wscrollTop + ' + ' + wscrollHeight + ' && ' + elemtop + ' >= ' + wscrollTop;
   }
 
   function GetNumeredIds(idPrefix, num) {
@@ -48,6 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
       numeredIds[index] = IdGet( idPrefix + index);
     }
     return numeredIds
+  }
+
+  function ArrayAddRemoveClass(array, classname) {
+    for (let index = 1; index < array.length; index++) {
+      if (IsVisible(array[index])) {
+        RemoveClass(array[index], classname);
+      } else  AddClass(array[index], classname);
+    }
   }
 
   let linksarray = [];
@@ -64,11 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     AddClass(menubutton,'nav-menu__menu-button_nohide');
 
-    let workarealinks = GetNumeredIds('JS-works-area-link-',6);
+    let workarealinks = GetNumeredIds('JS-works-area-link-',8);
 
     for (let index = 3; index < workarealinks.length; index++) {
       AddClass(workarealinks[index],'works-area__inner__link_hidden');
     }
+
+    ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
 
     menubutton.onclick = function() {
 
@@ -99,13 +108,20 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   window.onscroll = function() {
-    let workarealinks = GetNumeredIds('JS-works-area-link-',6);
-      
-      for (let index = 1; index < workarealinks.length; index++) {
-        if (IsVisible(workarealinks[index])) {
-          RemoveClass(workarealinks[index] ,'works-area__inner__link_hidden');
-        } else  AddClass(workarealinks[index] ,'works-area__inner__link_hidden');
-      }
+
+    let workarealinks = GetNumeredIds('JS-works-area-link-',8);
+    let scrollheight = document.documentElement.scrollHeight;
+    let heightoffset = window.pageYOffset + document.documentElement.clientHeight
+
+    console.log((heightoffset/scrollheight).toFixed(1));
+
+    ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+
+      // for (let index = 1; index < workarealinks.length; index++) {
+      //   if (IsVisible(workarealinks[index])) {
+      //     RemoveClass(workarealinks[index] ,'works-area__inner__link_hidden');
+      //   } else  AddClass(workarealinks[index] ,'works-area__inner__link_hidden');
+      // }
       
   }
 

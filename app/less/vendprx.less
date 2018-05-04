@@ -206,3 +206,11 @@
   -moz-justify-content:     @justify;
   -webkit-justify-content:  @justify;
 }
+
+.filter (@name: blur, @value: 5px) {
+  -webkit-filter: ~"@{name}(@{value})";
+     -moz-filter: ~"@{name}(@{value})";
+       -o-filter: ~"@{name}(@{value})";
+      -ms-filter: ~"@{name}(@{value})";
+          filter: ~"@{name}(@{value})";
+}

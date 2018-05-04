@@ -14,18 +14,49 @@
     background-position: 0 0 , center;
   }
   &__circle-div {
-    width: 30rem;
-    height: auto;
-    img {
-      width: 100%;
-      height: 100%;
+    position: relative;
+    &__img {
+      position: absolute;
+      width: 500px;
+      height: auto;
+      left: calc(~"50% - 250px");
+      top:  calc(~"50% - 250px");
+    }
+    &__svg {
+      position: absolute;
+      width:  500px;
+      height: 500px;
+      stroke-dasharray: 126 1000;
+      transform: rotate(210deg);
+      left: calc(~"50% - 250px");
+      top:  calc(~"50% - 250px");
+      circle {
+        stroke: rgba(255,255,255,0.3);    
+      }
+      &_perc{
+        &-25 {
+          stroke-dasharray: 31.5 1000;
+        }
+        &-50 {
+          stroke-dasharray: 63 1000;
+        }
+        &-75 {
+          stroke-dasharray: 94.5 1000;
+        }
+        &-100 {
+          stroke-dasharray: 126 1000;
+        }
+        circle {
+          stroke: rgba(255,255,255,1);    
+        }
+      }
     }
   }
 }
 
 .works-area {
   position: relative;
-  padding-top: 10rem;
+  padding: 10rem 0 5rem;
   z-index: 250;
   color: #fff;
   display: flex;
@@ -33,30 +64,48 @@
   justify-content: center;
   min-height: 100vh;
   &__inner {
-    width: 60rem;
+    width: 45rem;
     &__link {
-      width: 20rem;
+      display: inline;
+      text-decoration: none;
+      width: 15rem;
       height: auto;
-      transition: opacity 1.5s ease-in;
+      transition: opacity 1.5s ease-in, filter 1.5s linear;
+      .filter(blur, 0);
       &_hidden {
         opacity: 0;
+        .filter(blur, 10px);
       }
       img{
         width: 100%;
         height: auto;
         display: inline-block;
+        margin-bottom: 1rem;
       }
       &_left {
         float: left;
         clear: both;
-        margin-bottom: 2.5rem;
       }
       &_right {
         float: right;
-        clear: both;
-        margin-top: 2.5rem;
+        margin: 4rem 0;
       }
     }
+  }
+  &__text {
+    color: #fff;
+    text-transform: uppercase;
+    &__heading {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      font-size: 1.2em;
+    }
+    &__par {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.6em;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.25em;
+    } 
   }
 }
 
