@@ -28,7 +28,7 @@
                           @anim-name-2: translateY, @anim-dur-2: 1s, @anim-tm-fun-2: ease,
                           @anim-name-3: translateY, @anim-dur-3: 1s, @anim-tm-fun-3: ease
 ) when (@animcount = 1) {
-  animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1, @anim-name-2 @anim-dur-2 @anim-tm-fun-2;
+  animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1;
 }
 
 .cssanimmult (@animcount, @anim-name-1: translateY, @anim-dur-1: 1s, @anim-tm-fun-1: ease,
@@ -41,7 +41,7 @@
 .cssanimmult (@animcount, @anim-name-1: translateY, @anim-dur-1: 1s, @anim-tm-fun-1: ease,
                           @anim-name-2: translateY, @anim-dur-2: 1s, @anim-tm-fun-2: ease,
                           @anim-name-3: translateY, @anim-dur-3: 1s, @anim-tm-fun-3: ease                        
-) when (@animcount = 1) {
+) when (@animcount = 3) {
   animation: @anim-name-1 @anim-dur-1 @anim-tm-fun-1, @anim-name-2 @anim-dur-2 @anim-tm-fun-2, @anim-name-3 @anim-dur-3 @anim-tm-fun-3;
 }
 
@@ -123,5 +123,14 @@
   }
   to {
     padding: 7rem 5rem 4.5rem;
+  }
+}
+
+@keyframes maxWidth {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 100vw;
   }
 }
