@@ -9,13 +9,10 @@
   align-items: stretch;
   justify-content: stretch;
   &__header {
-    // max-height: 0;
     background-color: #fff;
     padding: 0;
     .vertical-menu__item {
       .transition-prfx(font-size, 0.5s, ease);
-      //transform: translateY(2.5rem);
-      //opacity: 0;
     } 
   }
   &__footer {
@@ -26,9 +23,8 @@
     flex-grow: 1;
     &__block {
       margin-bottom: 2.5rem;
-      opacity: 0;
-      .cssanimation(opacity, 2s , ease-in);
-      .transition-prfx(opacity, 2s, ease-in);
+      opacity: 1;
+      .transition-prfx(opacity, 5s, ease-in);
       &__inner {
         margin: 2.5rem 0;
         padding: 0;
@@ -45,16 +41,24 @@
   &.appeared {
     .min-size-menu {
       &__header {
-        .cssanimmult(2, maxWidth, 3s , ease-out, mmHeaderPadding, 1.5s, ease-out);
-        // max-height: 100%;
         padding: 7rem 5rem 4.5rem;    
-        .transition-prfx-two(max-height, 3s, ease-out, padding, 0.5s, linear);
+        .cssanimmult(3, maxWidth, 3s , ease-out, 0s, paddingfive, 1.5s, ease-out, 0s);
+        .transition-prfx-two(max-height, 3s, ease-out, 0s, padding, 0.5s, linear, 0s);
+        .vertical-menu {
+          .cssanimmult(2, opacity, 1.5s, ease-in, 1s, translateY5rem, 1s, ease-in, 1s);
+          .cssanimmult-fill-mode(2,backwards, backwards);
+          &__item {
+            .generate-child2();
+          }
+        }
       }
       &__footer {
-        .cssanimmult(1, maxWidth, 3s , ease-out);
+        .cssanimmult(2, maxWidth, 3s, ease-out, 0s, paddingsix, 1.5s, ease-out, 0s);
         &__block {
-          .transition-prfx(opacity, 1s, ease);
           opacity: 1;
+          .cssanimmult(2, opacity, 1.5s, ease-in, 1s, translateY5rem, 1s, ease-in, 1s);
+          .cssanimmult-fill-mode(2,backwards, backwards);
+          .transition-prfx(opacity, 5s, ease);
         }
       }
     }  
@@ -79,12 +83,13 @@
     &.appeared {
       .min-size-menu {
         &__header {
-          .cssanimmult(2, maxHeight, 3s , ease-out, mmHeaderPadding, 1.5s, ease-out);
+          .cssanimmult(2, maxHeight, 3s , ease-out, 0s, mmHeaderPadding, 1.5s, ease-out, 0s);
           max-height: 100%; //???
           padding: 7rem 5rem 4.5rem;    
-          .transition-prfx-two(max-height, 3s, ease-out, padding, 0.5s, linear);
+          .transition-prfx-two(max-height, 3s, ease-out, 0s, padding, 0.5s, linear, 0s);
         }
         &__footer {
+          animation: none;
           &__block {
             .transition-prfx(opacity, 1s, ease);
             opacity: 1;
