@@ -84,12 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
       let minsizemenu = IdGet('JS-min-size-menu');
       let logosvg = IdGet('JS-logo-svg');
       let worksarea = IdGet('JS-works-area');
+      let worksmenu = IdGet('JS-works-menu');
       let menuLines = GetNumeredIds('line-',3);
       // let logosvg = IdGet('JS-logo-svg');
       
       if (!menubuttonclicked) {
         RemoveClass(minsizemenu,'block-hide');
         AddClass(worksarea,'block-hide');
+        AddClass(worksmenu,'block-hide');
         AddClass(minsizemenu,'appeared');
         menuLines.forEach(element => {AddClass(element,'nav-menu__menu-button__line_dark')});
         logosvg.setAttribute("style","fill: #000");
@@ -97,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         AddClass(minsizemenu,'block-hide');
         RemoveClass(worksarea,'block-hide');
+        RemoveClass(worksmenu,'block-hide');
         RemoveClass(minsizemenu,'appeared');
         menuLines.forEach(element => {RemoveClass(element,'nav-menu__menu-button__line_dark')});
         logosvg.setAttribute("style","fill: #fff");
@@ -112,8 +115,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let workarealinks = GetNumeredIds('JS-works-area-link-',8);
     let scrollheight = document.documentElement.scrollHeight;
     let heightoffset = window.pageYOffset + document.documentElement.clientHeight;
+    let animatedcircle = IdGet('JS-circle-animated');
 
-    console.log((heightoffset/scrollheight).toFixed(1));
+    console.log((heightoffset/scrollheight).toFixed(2));
+
+    let scrollmarker = (heightoffset/scrollheight).toFixed(2);
+
+    if (scrollmarker <= 0.5) {
+      animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-25");
+    } else if ((scrollmarker > 0.5)&&(scrollmarker < 0.6)) {
+      animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-50");
+    } else if ((scrollmarker > 0.6)&&(scrollmarker < 0.7)) {
+      animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-75");
+    } else if (scrollmarker > 0.7) {
+      animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-100");
+    } 
+    
 
     ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
 

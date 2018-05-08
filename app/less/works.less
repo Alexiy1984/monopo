@@ -1,4 +1,6 @@
 @import 'vendprx.less';
+@import 'mixins.less';
+
 
 .bg-full-window {
   width: 100vw;
@@ -15,6 +17,11 @@
   }
   &__circle-div {
     position: relative;
+    width:  500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &__img {
       position: absolute;
       width: 500px;
@@ -34,6 +41,7 @@
         stroke: rgba(255,255,255,0.3);    
       }
       &_perc{
+        .transition-prfx(stroke-dasharray, 0.5s, ease-in-out);
         &-25 {
           stroke-dasharray: 31.5 1000;
         }
@@ -51,6 +59,44 @@
         }
       }
     }
+  }
+}
+
+.works-menu {
+  position: fixed;
+  z-index: 400;
+  width: 500px;
+  height: 500px;
+  top: calc(~"50vh - 250px");
+  left: calc(~"50vw - 250px");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__item {
+    list-style: none;
+    border: 1px solid transparent;
+    padding: 4px 8px;
+    margin-bottom: 5px;  
+    &:hover {
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+    }
+    &__animated-text {
+      display: inline-block;
+      .transition-prfx(transform, 0.5s, linear, 0s);
+      .generate-child-univ(1, 30, transition-delay, 0.05);
+    }
+    &:hover &__animated-text {
+      .transform-prfx(rotateX, 360deg);
+    }
+  }
+  &__link {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
   }
 }
 

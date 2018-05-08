@@ -54,6 +54,18 @@
   .generate-child5(@i + 1);
 }
 
+.generate-child-univ(@i: 1, @child-count: 10, @child-prop: transition-delay,@child-mult: 0.1) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}:          unit((@i * @child-mult + 0.1),s);
+    -o-@{child-prop}:       unit((@i * @child-mult + 0.1),s);
+    -ms-@{child-prop}:      unit((@i * @child-mult + 0.1),s);
+    -moz-@{child-prop}:     unit((@i * @child-mult + 0.1),s);
+    -webkit-@{child-prop}:  unit((@i * @child-mult + 0.1),s);
+  }
+  .generate-child-univ(@i + 1, @child-count, @child-prop, @child-mult);
+}
+
+
 .transition-prfx (@trans-prop: transform, @trans-time: 1s, @trans-tf: ease-in-out, @trans-delay: 0s) {
   -webkit-transition:   @trans-prop @trans-time @trans-tf @trans-delay;
   -moz-transition:      @trans-prop @trans-time @trans-tf @trans-delay;
@@ -78,4 +90,12 @@
   -moz-transition:      @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
   -o-transition:        @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
   transition:           @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
+}
+
+.transform-prfx(@property: rotateX, @value: 0) {
+  -webkit-transform:  ~"@{property}(@{value})";
+  -moz-transform:     ~"@{property}(@{value})";
+  -ms-transform:      ~"@{property}(@{value})";
+  -o-transform:       ~"@{property}(@{value})";
+  transform:          ~"@{property}(@{value})";
 }
