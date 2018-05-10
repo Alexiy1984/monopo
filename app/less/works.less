@@ -41,15 +41,27 @@
         stroke: rgba(255,255,255,0.3);    
       }
       &_perc{
-        .transition-prfx(stroke-dasharray, 0.5s, ease-in-out);
+        .transition-prfx-mult(1, stroke-dasharray, 0.5s, ease-in-out);
+        &-01 {
+          stroke-dasharray: 0 1000;
+        }
+        &-12_5 {
+          stroke-dasharray: 15.75 1000;
+        }
         &-25 {
           stroke-dasharray: 31.5 1000;
         }
         &-50 {
           stroke-dasharray: 63 1000;
         }
+        &-62_5 {
+          stroke-dasharray: 78.75 1000;
+        }
         &-75 {
           stroke-dasharray: 94.5 1000;
+        }
+        &-87_5 {
+          stroke-dasharray: 108.75 1000;
         }
         &-100 {
           stroke-dasharray: 126 1000;
@@ -73,19 +85,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  &__heading {
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-bottom: 15px;
+  }
   &__item {
     list-style: none;
     border: 1px solid transparent;
     padding: 4px 8px;
-    margin-bottom: 5px;  
+    margin: 5px 0;
+    .transition-prfx-mult(1, border, 0.5s, linear);
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }  
     &:hover {
-      border: 1px solid rgba(255,255,255,0.3);
       cursor: pointer;
+    }
+    &_selected {
+      border: 1px solid rgba(255,255,255,0.3);
     }
     &__animated-text {
       display: inline-block;
-      .transition-prfx(transform, 0.5s, linear, 0s);
-      .generate-child-univ(1, 30, transition-delay, 0.05);
+      .transition-prfx-mult(1, transform, 0.35s, linear, 0s);
+      .generate-child-univ(1, 30, transition-delay, 0.035);
     }
     &:hover &__animated-text {
       .transform-prfx(rotateX, 360deg);
@@ -94,7 +121,6 @@
   &__link {
     color: rgba(255,255,255,0.5);
     text-decoration: none;
-    font-family: 'Josefin Sans', sans-serif;
     font-size: 12px;
     text-transform: uppercase;
   }
@@ -122,6 +148,11 @@
         opacity: 0;
         .filter(blur, 10px);
       }
+      &:hover {
+        .works-area__text__animated-char {
+          .transform-prfx(rotateX, 360deg);
+        }  
+      }
       img{
         width: 100%;
         height: auto;
@@ -141,6 +172,17 @@
   &__text {
     color: #fff;
     text-transform: uppercase;
+    &__animated-char {
+      display: inline-block;
+      .transition-prfx-mult(1, transform, 0.35s, linear, 0s);
+      .generate-child-univ(1, 30, transition-delay, 0.035);
+      &_p {
+        letter-spacing: -0.35em;
+      }
+      &_h {
+        letter-spacing: -0.25em;
+      }
+    }
     &__heading {
       font-family: 'Oswald', sans-serif;
       font-weight: 400;

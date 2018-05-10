@@ -92,6 +92,36 @@
   transition:           @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
 }
 
+.transition-prfx-mult (@count: 1, @trans-prop-1: transform, @trans-time-1: 1s, @trans-tf-1: ease-in-out, @trans-delay-1: 0s,
+                        @trans-prop-2: transform, @trans-time-2: 1s, @trans-tf-2: ease-in-out, @trans-delay-2: 0s,
+                        @trans-prop-3: transform, @trans-time-3: 1s, @trans-tf-3: ease-in-out, @trans-delay-3: 0s) 
+when (@count = 1) {
+  -webkit-transition:   @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1;
+  -moz-transition:      @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1;
+  -o-transition:        @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1;
+  transition:           @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1;
+}
+
+.transition-prfx-mult (@count: 1, @trans-prop-1: transform, @trans-time-1: 1s, @trans-tf-1: ease-in-out, @trans-delay-1: 0s,
+                        @trans-prop-2: transform, @trans-time-2: 1s, @trans-tf-2: ease-in-out, @trans-delay-2: 0s,
+                        @trans-prop-3: transform, @trans-time-3: 1s, @trans-tf-3: ease-in-out, @trans-delay-3: 0s) 
+when (@count = 2) {
+  -webkit-transition:   @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2;
+  -moz-transition:      @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2;
+  -o-transition:        @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2;
+  transition:           @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2;
+}
+
+.transition-prfx-mult (@count: 1, @trans-prop-1: transform, @trans-time-1: 1s, @trans-tf-1: ease-in-out, @trans-delay-1: 0s,
+                        @trans-prop-2: transform, @trans-time-2: 1s, @trans-tf-2: ease-in-out, @trans-delay-2: 0s,
+                        @trans-prop-3: transform, @trans-time-3: 1s, @trans-tf-3: ease-in-out, @trans-delay-3: 0s) 
+when (@count = 3) {
+  -webkit-transition:   @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
+  -moz-transition:      @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
+  -o-transition:        @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
+  transition:           @trans-prop-1 @trans-time-1 @trans-tf-1 @trans-delay-1, @trans-prop-2 @trans-time-2 @trans-tf-2 @trans-delay-2, @trans-prop-3 @trans-time-3 @trans-tf-3 @trans-delay-3;
+}
+
 .transform-prfx(@property: rotateX, @value: 0) {
   -webkit-transform:  ~"@{property}(@{value})";
   -moz-transform:     ~"@{property}(@{value})";
