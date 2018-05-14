@@ -2,11 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   console.log('works java-script  file initialized');
   
-  function IdGet(idname) {return typeof i == 'object' ? i : document.getElementById(idname);}
+  //function IdGet(idname) {return typeof i == 'object' ? i : document.getElementById(idname);}
 
   function ClassGet(classname) {return document.getElementsByClassName(classname);}
 
-  function AllGet(tagname) {return document.querySelectorAll(tagname);}
+  function AllGet(tagname) {
+    let element = document.querySelectorAll(tagname);
+    if (element.length <= 1) {
+      return document.querySelector(tagname);
+    } else return document.querySelectorAll(tagname);
+  }
 
   function RemoveClass(element, classname) {
     var reg = new RegExp("\\b"+ classname+"\\b","g");
@@ -43,16 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
     return ((elemtopwheight <= wscrollTop + wscrollHeight) && (elemtop >= wscrollTop ));
   }
 
-  function GetNumeredIds(idPrefix, num) {
-    let numeredIds = [];
-    for (let index = 1; index <= num; index++) {
-      numeredIds[index] = IdGet( idPrefix + index);
-    }
-    return numeredIds
-  }
+  // function GetNumeredIds(idPrefix, num) {
+  //   let numeredIds = [];
+  //   for (let index = 1; index <= num; index++) {
+  //     numeredIds[index] = IdGet( idPrefix + index);
+  //   }
+  //   return numeredIds
+  // }
 
   function ArrayAddRemoveClass(array, classname) {
-    for (let index = 1; index < array.length; index++) {
+    for (let index = 0; index < array.length; index++) {
       if (IsVisible(array[index])) {
         RemoveClass(array[index], classname);
       } else  AddClass(array[index], classname);
@@ -75,70 +80,142 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (scroll<=0.90) {
       element.setAttribute("class", attrib+"87_5");
     } else element.setAttribute("class", attrib+"100");
-    
-    // if (scrollmarker <= 0.5) {
-    //   animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-25");
-    // } else if ((scrollmarker > 0.5)&&(scrollmarker < 0.6)) {
-    //   animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-50");
-    // } else if ((scrollmarker > 0.6)&&(scrollmarker < 0.7)) {
-    //   animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-75");
-    // } else if (scrollmarker > 0.7) {
-    //   animatedcircle.setAttribute("class", "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-100");
-    // } 
   }
-  
-  let linksarray = [];
 
   window.onload = function () {
-    let animatedcircle = IdGet('JS-circle-animated');
-    let scrollmarker = ((heightoffset/scrollheight)+0.1).toFixed(2);
 
-    let worksmenuitems = AllGet('.works-menu__item');
-
+    //declaration START
+    let animatedcircle    = AllGet('.bg-full-window__circle-div__svg_perc');
+    let scrollheight      = document.documentElement.scrollHeight;
+    let heightoffset      = window.pageYOffset + document.documentElement.clientHeight/3;
+    let scrollmarker      = ((heightoffset/scrollheight)+0.1).toFixed(2);
+    let worksmenuitems    = AllGet('.works-menu__item');
+    let logosvg           = AllGet('.logo__svg');
+    let menubutton        = AllGet('.nav-menu__menu-button');
+    let menubuttonclicked = false;
+    let workarealinks     = AllGet('.works-area__inner__link');
+    //declaration END
+    
     SwitchClassesOnScroll(scrollmarker, animatedcircle, "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-");
+    
+    // эксп. код START
 
-    console.log(worksmenuitems);
+    let linksDigital  = [4 , 9 ];
+    let linksBrand    = [10, 13]; 
+    let linksCompany  = [1 , 8 ];
+    let linksVideo    = [2 , 7 ];
+    let linksPhoto    = [5 , 10];
+    let linksInitial  = [0 , 6 ];
+    let linksTokio    = [3 , 12];
+
+    function ElementsArrangement(linksnumbers, linksarray) {
+      indexVis = 0;
+      for (let index = 0; index < linksarray.length; index++) {
+        AddClass(linksarray[index],'block-hide');
+        for (let y = 0; y < linksnumbers.length; y++) {  
+         if( index == linksnumbers[y]) {
+          RemoveClass(linksarray[index],'block-hide');    
+         }
+        }
+        arrvis = linksarray[index].className.split(" ");
+        if (arrvis.indexOf('block-hide') == -1) {
+          ++indexVis;
+          if (indexVis % 2 == 0) {
+            AddClass(linksarray[index], 'works-area__inner__link_right');
+            RemoveClass(linksarray[index], 'works-area__inner__link_left');  
+          } else {
+            AddClass(linksarray[index], 'works-area__inner__link_left');
+            RemoveClass(linksarray[index], 'works-area__inner__link_right');  
+          }
+        }
+      };
+    }
 
     for (let index = 0; index < worksmenuitems.length; index++) {
       worksmenuitems[index].onclick = function() {
+        let showeditems = [];
+        let indexArr;   
         for (let index = 0; index < worksmenuitems.length; index++) {
-          RemoveClass(worksmenuitems[index],'works-menu__item_selected');
+          RemoveClass(worksmenuitems[index],'works-menu__item_selected'); 
         }
         AddClass(worksmenuitems[index],'works-menu__item_selected');
+        switch (index) {
+          case 0:
+          for (let index2 = 0; index2 < workarealinks.length; index2++) {
+            try {
+              RemoveClass(workarealinks[index2],'block-hide');
+              if (index2 % 2 == 0) {
+                AddClass(workarealinks[index2],'works-area__inner__link_left');
+                RemoveClass(workarealinks[index2],'works-area__inner__link_right');
+              } else {
+                AddClass(workarealinks[index2],'works-area__inner__link_right');
+                RemoveClass(workarealinks[index2],'works-area__inner__link_left');
+              }
+            } catch (e) {
+              console.log(workarealinks[index2] + ' : ' + index2 );
+              console.log(workarealinks.length);
+              if (index2 > 15) break;
+            }
+          }
+          break;
+          case 1:
+            ElementsArrangement(linksDigital  ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 2:
+            ElementsArrangement(linksBrand    ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 3:
+            ElementsArrangement(linksCompany  ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 4:
+            ElementsArrangement(linksVideo    ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 5:
+            ElementsArrangement(linksPhoto    ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 6:
+            ElementsArrangement(linksInitial  ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          case 7:
+            ElementsArrangement(linksTokio    ,workarealinks);
+            ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
+          break;
+          default: console.log('do nothing');
+          break;
+        } 
       }
     }
 
-    let logosvg = IdGet('JS-logo-svg');
+    // эксп. код END
+
     logosvg.setAttribute("style","fill: #fff");
 
-    let menubutton = IdGet('JS-menu-button');
-    let menubuttonclicked = false;
-    // console.log(menubuttonclicked);
-    // console.log(menubutton);
-
     AddClass(menubutton,'nav-menu__menu-button_nohide');
-
-    let workarealinks = GetNumeredIds('JS-works-area-link-',14);
-
-    for (let index = 3; index < workarealinks.length; index++) {
-      AddClass(workarealinks[index],'works-area__inner__link_hidden');
-    }
-
+    
     ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
 
     menubutton.onclick = function() {
 
-      let minsizemenu = IdGet('JS-min-size-menu');
-      let logosvg = IdGet('JS-logo-svg');
-      let worksarea = IdGet('JS-works-area');
-      let worksmenu = IdGet('JS-works-menu');
-      let menuLines = GetNumeredIds('line-',3);
-      // let logosvg = IdGet('JS-logo-svg');
+      let minsizemenu   = AllGet('.min-size-menu');
+      let logosvg       = AllGet('.logo__svg');
+      let worksarea     = AllGet('.works-area');
+      let worksmenu     = AllGet('.works-menu');
+      let menuLines     = AllGet('.nav-menu__menu-button__line');
+      let bootomrottext = AllGet('.bottom-rotated-text');
+      let bottomarrow   = AllGet('.bottom-arrow');
       
       if (!menubuttonclicked) {
         RemoveClass(minsizemenu,'block-hide');
         AddClass(worksarea,'block-hide');
         AddClass(worksmenu,'block-hide');
+        AddClass(bootomrottext,'block-hide');
+        AddClass(bottomarrow,'block-hide');
         AddClass(minsizemenu,'appeared');
         menuLines.forEach(element => {AddClass(element,'nav-menu__menu-button__line_dark')});
         logosvg.setAttribute("style","fill: #000");
@@ -147,34 +224,28 @@ document.addEventListener('DOMContentLoaded', function() {
         AddClass(minsizemenu,'block-hide');
         RemoveClass(worksarea,'block-hide');
         RemoveClass(worksmenu,'block-hide');
+        RemoveClass(bootomrottext,'block-hide');
+        RemoveClass(bottomarrow,'block-hide');
         RemoveClass(minsizemenu,'appeared');
         menuLines.forEach(element => {RemoveClass(element,'nav-menu__menu-button__line_dark')});
         logosvg.setAttribute("style","fill: #fff");
         menubuttonclicked = false;
-      }
-      
+      } 
     }
-
   }
 
   window.onscroll = function() {
 
-    let workarealinks = GetNumeredIds('JS-works-area-link-',14);
-    let scrollheight = document.documentElement.scrollHeight;
-    let heightoffset = window.pageYOffset + document.documentElement.clientHeight/3;
-    let animatedcircle = IdGet('JS-circle-animated');
-    let scrollmarker = ((heightoffset/scrollheight)+0.1).toFixed(2);
+    let workarealinks   = AllGet('.works-area__inner__link');
+    let scrollheight    = document.documentElement.scrollHeight;
+    let heightoffset    = window.pageYOffset + document.documentElement.clientHeight/3;
+    let animatedcircle  = AllGet('.bg-full-window__circle-div__svg_perc');
+    let scrollmarker    = ((heightoffset/scrollheight)+0.1).toFixed(2);
 
     SwitchClassesOnScroll(scrollmarker, animatedcircle, "bg-full-window__circle-div__svg bg-full-window__circle-div__svg_perc bg-full-window__circle-div__svg_perc-");
   
     ArrayAddRemoveClass(workarealinks, 'works-area__inner__link_hidden');
 
-      // for (let index = 1; index < workarealinks.length; index++) {
-      //   if (IsVisible(workarealinks[index])) {
-      //     RemoveClass(workarealinks[index] ,'works-area__inner__link_hidden');
-      //   } else  AddClass(workarflealinks[index] ,'works-area__inner__link_hidden');
-      // }
-      
   }
 
 });

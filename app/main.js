@@ -6,10 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function ClassGet(classname) {return document.getElementsByClassName(classname);}
 
-
   function RemoveClass(element, classname) {
     var reg = new RegExp("\\b"+ classname+"\\b","g");
     element.className = element.className.replace(reg," ");
+  }
+
+  function AllGet(tagname) {
+    let element = document.querySelectorAll(tagname);
+    if (element.length <= 1) {
+      return document.querySelector(tagname);
+    } else return document.querySelectorAll(tagname);
   }
 
   function AddClass(element, classname) {
@@ -41,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       let rowsarray = GetNumeredIds('JS-row-',3);
       let minsizemenu = IdGet('JS-min-size-menu');
-      let menuLines = GetNumeredIds('line-',3);
+      let menuLines = AllGet('.nav-menu__menu-button__line');
       let navmenuitems = GetNumeredIds('JS-nav-menu__item-',5);
       // let logosvg = IdGet('JS-logo-svg');
       let rotatedtext = IdGet('JS-rotated-text');
