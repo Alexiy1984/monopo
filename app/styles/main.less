@@ -56,6 +56,22 @@ body {
   background-color: #fff;
   background-repeat: repeat;
   background-size: cover;
+  &_fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  &_transparent {
+    background-color: transparent;
+  }
+  &_fixed_footer {
+    position: fixed;
+    top: 100vh;
+    left: 0;
+  }
+  &_after-fixed {
+    margin-top: 100vh;
+  }
   &__inner {
     padding-left: 12rem;
     &_hidden {

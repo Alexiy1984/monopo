@@ -1,0 +1,10 @@
+.generate-child-univ(@i: 1, @child-name: nth-child, @child-count: 10, @child-prop: transition-delay,@child-mult: 0.05) when (@i =< @child-count) {
+  &:@{child-name}(@{i}) {
+    @{child-prop}:          unit((@i * @child-mult),s);
+    -o-@{child-prop}:       unit((@i * @child-mult),s);
+    -ms-@{child-prop}:      unit((@i * @child-mult),s);
+    -moz-@{child-prop}:     unit((@i * @child-mult),s);
+    -webkit-@{child-prop}:  unit((@i * @child-mult),s);
+  }
+  .generate-child-univ(@i + 1, @child-name, @child-count, @child-prop, @child-mult);
+}

@@ -5,7 +5,8 @@ exports.files = {
   },
   stylesheets: {
     joinTo: {
-      '/css/main.css': 'app/less/main.less'
+      '/css/main.css': 'app/styles/main.less',
+      '/css/solutions.css' : 'app/styles/bundles/solutions.bundle.less'
     }
   }
 };

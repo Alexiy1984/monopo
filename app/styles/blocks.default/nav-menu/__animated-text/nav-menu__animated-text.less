@@ -1,0 +1,11 @@
+@import '../../../additions/mixins/generate-child.less';
+@import '../../../additions/mixins/transitions.less';
+.nav-menu__atimated-text {
+  letter-spacing: -0.35em;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  display: inline-block;
+  .transition-prfx-mult(1, transform, 0.5s);
+  -webkit-transition: -webkit-transform 0.5s;
+  .generate-child-univ(1, nth-child, 15, transition-delay, 0.05);
+}

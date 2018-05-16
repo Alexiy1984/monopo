@@ -1,0 +1,10 @@
+@import '../../../additions/mixins/transform-prefix.less';
+.nav-menu__link {
+  font-size: 0.75em;
+  font-family: 'Josefin Sans', sans-serif;
+  text-decoration: none;
+  color: #fff;
+  &:hover .nav-menu__atimated-text {
+    .transform-prfx(rotateX, 360deg);
+  }
+}
