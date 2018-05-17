@@ -1,0 +1,67 @@
+@import '../../../additions/mixins/transitions.less';
+@import '../../../additions/animations/animation.less';
+@import '../../../additions/mixins/generate-child.less';
+
+._appeared {
+  .main-hidden-menu {
+    &__header {
+      padding: 7rem 5rem 4.5rem;    
+      .cssanimmult(3, maxWidth, 3s , ease-out, 0s, paddingfive, 1.5s, ease-out, 0s);
+      .transition-prfx-mult(2, max-height, 3s, ease-out, 0s, padding, 0.5s, linear, 0s);
+      .vertical-menu {
+        .cssanimmult(2, opacity, 1.5s, ease-in, 1s, translateY5rem, 1s, ease-in, 1s);
+        .cssanimmult-fill-mode(2,backwards, backwards);
+        &__item {
+          .generate-child-univ(1, nth-child, 30, animation-delay, 0.05);
+        }
+      }
+    }
+    &__footer {
+      .cssanimmult(2, maxWidth, 3s, ease-out, 0s, paddingsix, 1.5s, ease-out, 0s);
+    }
+    &__block {
+      opacity: 1;
+      .cssanimmult(2, opacity, 1.5s, ease-in, 1s, translateY5rem, 1s, ease-in, 1s);
+      .cssanimmult-fill-mode(2,backwards, backwards);
+      .transition-prfx-mult(1, opacity, 5s, ease);
+    }
+  }  
+}
+ 
+@media (max-width: 1680px) {
+  
+}
+@media (max-width: 1280px) {
+  
+}
+@media (max-width: 980px) {
+  
+}
+@media (max-width: 860px) {
+  ._appeared {
+    .main-hidden-menu {
+      &__header {
+        .cssanimmult(2, maxHeight, 3s , ease-out, 0s, mmHeaderPadding, 1.5s, ease-out, 0s);
+        max-height: 100%; 
+        padding: 7rem 5rem 4.5rem;    
+        .transition-prfx-mult(2, max-height, 3s, ease-out, 0s, padding, 0.5s, linear, 0s);
+      }
+      &__footer {
+        animation: none;
+      }
+      &__block {
+        .transition-prfx-mult(1, opacity, 1s, ease);
+        opacity: 1;
+      }
+    }  
+  }
+}
+@media (max-width: 680px) {
+
+}
+@media (max-width: 480px) {
+  
+}
+@media (max-width: 360px) {
+  
+}

@@ -1,0 +1,9 @@
+@import '../../../additions/mixins/transitions.less';
+
+.main-hidden-menu__header {
+  background-color: #fff;
+  padding: 0;
+  .vertical-menu__item {
+    .transition-prfx-mult(1, font-size, 0.5s, ease);
+  } 
+}
