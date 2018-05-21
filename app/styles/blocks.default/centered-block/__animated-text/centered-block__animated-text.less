@@ -1,0 +1,11 @@
+@import '../../../additions/animations/animation.less';
+@import '../../../additions/mixins/transform-prefix.less';
+
+.centered-block__animated-text {
+  font-weight: 500;
+  letter-spacing: -0.3em;
+  display: inline-block;
+  animation: translateY2_5rem 1s linear;
+  .transform-prfx(translateY, 2.5rem);
+  animation-fill-mode: forwards;
+}

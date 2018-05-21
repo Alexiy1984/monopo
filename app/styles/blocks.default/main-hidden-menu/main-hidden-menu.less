@@ -3,14 +3,20 @@
 @import '../../additions/mixins/generate-child.less';
 
 .main-hidden-menu {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left:0;
+  overflow-y:auto;
+  height: 100%;
   z-index: 200;
   display: flex;
   min-height: 100vh;
+  min-width: 100vw;
   align-items: stretch;
   justify-content: stretch;
   &.appeared {
     .main-hidden-menu {
+      position: absolute;
       &__header {
         padding: 7rem 5rem 4.5rem;    
         .cssanimmult(3, maxWidth, 3s , ease-out, 0s, paddingfive, 1.5s, ease-out, 0s);

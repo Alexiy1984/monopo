@@ -2,6 +2,7 @@
 
 // font for (nav-menu__animated-text)
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&subset=cyrillic,latin-ext');
 
 //[FONTS/]########################################################################################################################
 
@@ -25,17 +26,26 @@ html {
 @import '../blocks.default/wrapper/wrapper.less';
 @import '../blocks.default/header/header.less';
 @import '../blocks.default/_visibility/_visibility_hidden.less';
+@import '../blocks.default/_no-scroll/_no-scroll.less';
+
+//TEXT
+@import '../blocks.default/text/text.less';
+@import '../blocks.default/text/_big/text_big.less';
+
 
 // LOGO
 @import '../blocks.default/logo/logo.less';
 @import '../blocks.default/logo/__svg/logo__svg.less';
+@import '../blocks.default/logo/__svg/_dark/logo__svg_dark.less';
 
 // ROW
 @import '../blocks.default/row/row.less';
+@import '../blocks.default/row/_no-height/row_no-height.less';
 @import '../blocks.default/row/_fixed/row_fixed.less';
 @import '../blocks.default/row/_theme/row_transparent.less';
-@import '../blocks.default/row/__inner/row__inner.less';
 @import '../blocks.default/row/_theme/row_solutions_img.less';
+@import '../blocks.default/row/__inner/row__inner.less';
+@import '../blocks.default/row/__img/_width-100/row__img_width-100.less';
 
 // NAV-MENU
 @import '../blocks.default/nav-menu/nav-menu.less';
@@ -65,5 +75,14 @@ html {
 @import '../blocks.default/vertical-menu/_oversize/vertical-menu_oversize.less';
 @import '../blocks.default/vertical-menu/__item/vertical-menu__item.less';
 @import '../blocks.default/vertical-menu/__link/_underlined/vertical-menu__link_underlined.less';
+
+//CENTERED BLOCK
+@import '../blocks.default/centered-block/centered-block.less';
+@import '../blocks.default/centered-block/__inner/centered-block__inner.less';
+@import '../blocks.default/centered-block/__text-container/centered-block__text-container.less';
+@import '../blocks.default/centered-block/__animated-text/centered-block__animated-text.less';
+
+//TEXT_AREA
+@import '../blocks.default/text-area/text-area.less';
 
 //[BEM-IMPORT/]####################################################################################################################

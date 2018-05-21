@@ -8,7 +8,8 @@ exports.files = {
           'app/scripts/bundles/solutions.bundle.js',
           'app/scripts/functions/class/class-add.js',
           'app/scripts/functions/class/class-remove.js',
-          'app/scripts/functions/get/get-all.js'
+          'app/scripts/functions/get/get-all.js',
+          'app/scripts/blocks.default/main-hidden-menu/main-hidden-menu.js'
         ]
     } 
   },
