@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const AllGet            = require('../functions/get/get-all');
   const AddClass          = require('../functions/class/class-add');
   const RemoveClass       = require('../functions/class/class-remove');
+  const IsVisible         = require('../functions/conditional/is-visible');
   const ShowMenuPosition  = require('../blocks.default/main-hidden-menu/main-hidden-menu');
 
   let menubutton          = AllGet('.nav-menu__menu-button');
   let mainhiddenmenu      = AllGet('.main-hidden-menu');
   let logosvg             = AllGet('.logo__svg');
   let body                = AllGet('.body');
+  let rownoheightelmts    = AllGet('.row_no-height .row__inner > *');
   let menubuttonclicked   = false;
 
   AddClass(menubutton,'nav-menu__menu-button_nohide');
@@ -34,4 +36,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  console.log(rownoheightelmts);
+
+  for (let index = 0; index < rownoheightelmts.length; index++) {
+    AddClass(rownoheightelmts[index],'_opacity_full');
+    AddClass(rownoheightelmts[index],'_translate_Y-2_5rem');
+    if (IsVisible(rownoheightelmts[index])==true) {
+      RemoveClass(rownoheightelmts[index],'_opacity_full');
+      RemoveClass(rownoheightelmts[index],'_translate_Y-2_5rem');
+    }
+
+  }  
+
+  document.addEventListener('scroll', function() {
+
+    for (let index = 0; index < rownoheightelmts.length; index++) {
+      if (IsVisible(rownoheightelmts[index])==true) {
+        AddClass(rownoheightelmts[index],'_appear_animation');
+      }
+    }  
+  
+  });
+
 });
+

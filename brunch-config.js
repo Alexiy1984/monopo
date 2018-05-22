@@ -9,6 +9,8 @@ exports.files = {
           'app/scripts/functions/class/class-add.js',
           'app/scripts/functions/class/class-remove.js',
           'app/scripts/functions/get/get-all.js',
+          'app/scripts/functions/get/get-coord.js',
+          'app/scripts/functions/conditional/is-visible.js',
           'app/scripts/blocks.default/main-hidden-menu/main-hidden-menu.js'
         ]
     } 
