@@ -5,17 +5,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const AllGet            = require('../functions/get/get-all');
   const AddClass          = require('../functions/class/class-add');
   const RemoveClass       = require('../functions/class/class-remove');
+  const ArrayToggleClass  = require('../functions/class/class-array-toggle.js');
   const IsVisible         = require('../functions/conditional/is-visible');
+  const IsNodeList        = require('../functions/conditional/is-nodelist');
+  const PreAnimProcess    = require('../functions/elem-actions/pre-anim');
   const ShowMenuPosition  = require('../blocks.default/main-hidden-menu/main-hidden-menu');
 
   let menubutton          = AllGet('.nav-menu__menu-button');
   let mainhiddenmenu      = AllGet('.main-hidden-menu');
   let logosvg             = AllGet('.logo__svg');
   let body                = AllGet('.body');
-  let rownoheightelmts    = AllGet('.row_no-height .row__inner > *');
-  let rowtransp2elmts     = AllGet('.row_transparent.jstr2 .row__inner > *');
-  let rowfixed            = AllGet('.row_fixed.row_solutions_img');
-  let rowfixedcentinner   = AllGet('.row_fixed.row_solutions_img .centered-block__inner');
+  //let rownoheightelmts    = AllGet('.row_no-height .row__inner > *');
+  let rowtransp2elmts     = AllGet('.js-anim-container > *');
+  let rowfixed            = AllGet('.js-background');
+  let rowfixedcentinner   = AllGet('.js-background .centered-block__inner');
   let menubuttonclicked   = false;
 
   AddClass(menubutton,'nav-menu__menu-button_nohide');
@@ -39,42 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  console.log(rownoheightelmts);
+  PreAnimProcess(rowtransp2elmts, '_opacity_full', '_translate_Y-2_5rem');
 
-  // function PreAnimProcess(eltarr) {
-  //   for (let i = 0; i < rownoheightelmts.length; i++) { 
-  //     for (let y = 1; y < arguments.length; y++) {
-  //       AddClass(eltarr[i],arguments[y]);
-  //     }
-  //     if (IsVisible(eltarr[i])==true) {
-  //       for (let y = 1; y < arguments.length; y++) {
-  //         RemoveClass(eltarr[i],arguments[y]);
-  //       }
-  //     }
-  //   }  
-  // }
-
-  // PreAnimProcess(rowtransp2elmts, '_opacity_full', '_translate_Y-2_5rem');
-
-  for (let index = 0; index < rownoheightelmts.length; index++) {
-    AddClass(rownoheightelmts[index],'_opacity_full');  
-    AddClass(rownoheightelmts[index],'_translate_Y-2_5rem');
-    if (IsVisible(rownoheightelmts[index])==true) {
-      RemoveClass(rownoheightelmts[index],'_opacity_full');
-      RemoveClass(rownoheightelmts[index],'_translate_Y-2_5rem');
-    }
-  }  
+  //PreAnimProcess(rownoheightelmts, '_opacity_full', '_translate_Y-2_5rem');
 
   document.addEventListener('scroll', function() {
 
     let wscrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    for (let index = 0; index < rownoheightelmts.length; index++) {
-      if (IsVisible(rownoheightelmts[index])==true) {
-        AddClass(rownoheightelmts[index],'_appear_animation');
-        AddClass(rowtransp2elmts[index],'_appear_animation');
-      }
-    }  
+    //ArrayToggleClass(rownoheightelmts, '_appear_animation', 'add');
+    ArrayToggleClass(rowtransp2elmts, '_appear_animation', 'add');
 
     if (wscrollTop > document.documentElement.clientHeight) {
       rowfixed.style.background = '#1c1c1c';
