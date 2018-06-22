@@ -16,10 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let logosvg             = AllGet('.logo__svg');
   let body                = AllGet('.body');
   //let rownoheightelmts    = AllGet('.row_no-height .row__inner > *');
-  let rowtransp2elmts     = AllGet('.js-anim-container > *');
+  //let rowtransp2elmts     = AllGet('.js-anim-container > *');
   let rowfixed            = AllGet('.js-background');
   let rowfixedcentinner   = AllGet('.js-background .centered-block__inner');
   let menubuttonclicked   = false;
+  
+  rowtransp2elmts         = document.getElementsByClassName('js-anim-container');
+
 
   AddClass(menubutton,'nav-menu__menu-button_nohide');
 
@@ -42,7 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  PreAnimProcess(rowtransp2elmts, '_opacity_full', '_translate_Y-2_5rem');
+  for (var i = 0; i < rowtransp2elmts.length; i++ ) {
+    console.log(rowtransp2elmts[i].querySelectorAll('.js-element'));
+    elemts = rowtransp2elmts[i].querySelectorAll('.js-element');
+    PreAnimProcess(elemts, '_opacity_full', '_translate_Y-2_5rem');
+  }
 
   //PreAnimProcess(rownoheightelmts, '_opacity_full', '_translate_Y-2_5rem');
 
@@ -51,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let wscrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     //ArrayToggleClass(rownoheightelmts, '_appear_animation', 'add');
-    ArrayToggleClass(rowtransp2elmts, '_appear_animation', 'add');
+    for (var i = 0; i < rowtransp2elmts.length; i++ ) {
+      ArrayToggleClass(rowtransp2elmts[i].querySelectorAll('.js-element'), '_appear_animation', 'add');
+    }  
 
     if (wscrollTop > document.documentElement.clientHeight) {
       rowfixed.style.background = '#1c1c1c';
@@ -62,8 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
       rowfixed.style.backgroundSize = 'cover';
       RemoveClass(rowfixedcentinner,'_visibility_hidden');
     }
-  
   });
-
 });
 

@@ -6,14 +6,19 @@ const RemoveClass = require('../class/class-remove');
 module.exports = function PreAnimProcess(eltarr) {
   if (IsNodeList) {
     for (let i = 0; i < eltarr.length; i++) {
-      eltarr[i].style.animationDelay = (i * 0.25)+'s'; 
-      for (let y = 1; y < arguments.length; y++) {
-        AddClass(eltarr[i],arguments[y]);
-      }
-      if (IsVisible(eltarr[i]) == true) {
+      try {
+        eltarr[i].style.animationDelay = (i * 0.25)+'s';
         for (let y = 1; y < arguments.length; y++) {
-          RemoveClass(eltarr[i],arguments[y]);
+          AddClass(eltarr[i],arguments[y]);
+        } 
+        if (IsVisible(eltarr[i]) == true) {
+          for (let y = 1; y < arguments.length; y++) {
+            RemoveClass(eltarr[i],arguments[y]);
+          }
         }
+      } catch (error) {
+        console.log(  eltarr[i] + error.message);
+        i++;
       }
     }  
   } else {
